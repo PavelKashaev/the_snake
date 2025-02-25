@@ -96,7 +96,7 @@ class Snake(GameObject):
     def draw(self):
         """Метод прорисовки змеи на игровом поле."""
         for position in self.positions[:-1]:
-            self.draw_rect(position, self.body_color) 
+            self.draw_rect(position, self.body_color)
         self.draw_rect(self.get_head_position(), self.body_color)
         if self.last:
             last_rect = pygame.Rect(self.last, (GRID_SIZE, GRID_SIZE))
@@ -118,6 +118,7 @@ class Apple(GameObject):
         self.randomize_position(snake_positions)
 
     def randomize_position(self, snake_positions):
+        """Метод для определения координат яблока на доске"""
         while True:
             position = (
                 choice(range(0, SCREEN_WIDTH, 20)),
@@ -163,7 +164,6 @@ def main():
         apple.draw()
         snake.draw()
         snake.update_direction()
-        
         pygame.display.update()
         if snake.get_head_position() == apple.position:
             snake.lenght += 1
