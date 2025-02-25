@@ -112,7 +112,7 @@ class Snake(GameObject):
 class Apple(GameObject):
     """Класс описания яблока"""
 
-    def __init__(self, snake_positions=None):
+    def __init__(self, snake_positions):
         super().__init__()
         self.body_color = APPLE_COLOR
         self.randomize_position(snake_positions)
