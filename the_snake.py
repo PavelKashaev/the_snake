@@ -112,12 +112,12 @@ class Snake(GameObject):
 class Apple(GameObject):
     """Класс описания яблока"""
 
-    def __init__(self, snake_positions):
+    def __init__(self, snake_positions=None):
         super().__init__()
         self.body_color = APPLE_COLOR
         self.randomize_position(snake_positions)
 
-    def randomize_position(self, snake_positions):
+    def randomize_position(self, snake_positions=None):
         """Метод для определения координат яблока на доске"""
         while True:
             position = (
