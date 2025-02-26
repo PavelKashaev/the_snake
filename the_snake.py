@@ -22,10 +22,10 @@ BOARD_BACKGROUND_COLOR = (0, 0, 0)
 BORDER_COLOR = (93, 216, 228)
 
 # Цвет яблока:
-APPLE_COLOR = (255, 0, 0)
+APPLE_COLOR = (230, 5, 0)
 
 # Цвет змейки:
-SNAKE_COLOR = (0, 255, 0)
+SNAKE_COLOR = (0, 100, 0)
 
 # Скорость движения змейки:
 SPEED = 10
@@ -115,7 +115,7 @@ class Apple(GameObject):
     def __init__(self, snake_positions=None) -> None:
         super().__init__()
         self.body_color = APPLE_COLOR
-        self.randomize_position(snake_positions)
+        self.randomize_position(snake_positions or [])
 
     def randomize_position(self, snake_positions=None):
         """Метод для определения координат яблока на доске"""
