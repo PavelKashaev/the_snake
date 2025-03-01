@@ -129,6 +129,7 @@ class Apple(GameObject):
         """Отрисовка яблока на игровом поле"""
         self.draw_rect(self.position, self.body_color)
 
+
 def handle_keys(game_object):
     """Функция обработки нажатия клавиш управления."""
     for event in pg.event.get():
