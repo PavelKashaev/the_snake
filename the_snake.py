@@ -49,6 +49,12 @@ class GameObject:
         """Абстрактный метод."""
         raise NotImplementedError
 
+    def draw_rect(self, position, body_color):
+        """Метод отрисовки классов"""
+        rect = pg.Rect(position, (GRID_SIZE, GRID_SIZE))
+        pg.draw.rect(screen, body_color, rect)
+        pg.draw.rect(screen, BORDER_COLOR, rect, 1)
+
 
 class Snake(GameObject):
     """Создание класса описания змеи."""
@@ -88,12 +94,8 @@ class Snake(GameObject):
     def draw(self):
         """Метод прорисовки змеи на игровом поле."""
         for position in self.positions[:-1]:
-            rect = (pg.Rect(position, (GRID_SIZE, GRID_SIZE)))
-            pg.draw.rect(screen, self.body_color, rect)
-            pg.draw.rect(screen, BORDER_COLOR, rect, 1)
-        head_rect = pg.Rect(self.positions[0], (GRID_SIZE, GRID_SIZE))
-        pg.draw.rect(screen, self.body_color, head_rect)
-        pg.draw.rect(screen, BORDER_COLOR, head_rect, 1)
+            self.draw_rect(position, self.body_color)
+        self.draw_rect(self.get_head_position(), self.body_color)
         if self.last:
             last_rect = pg.Rect(self.last, (GRID_SIZE, GRID_SIZE))
             pg.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
@@ -125,10 +127,7 @@ class Apple(GameObject):
 
     def draw(self):
         """Отрисовка яблока на игровом поле"""
-        rect = pg.Rect(self.position, (GRID_SIZE, GRID_SIZE))
-        pg.draw.rect(screen, self.body_color, rect)
-        pg.draw.rect(screen, BORDER_COLOR, rect, 1)
-
+        self.draw_rect(self.position, self.body_color)
 
 def handle_keys(game_object):
     """Функция обработки нажатия клавиш управления."""
